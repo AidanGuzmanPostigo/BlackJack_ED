@@ -9,6 +9,7 @@ public class ConsoleInput implements IEntradaSalida{
 	private void cleanInput() {
 		keyboard.nextLine();
 	}
+	@Override
 	public int readInt(String mensaje) {
 		int value=0;
 		boolean error;
@@ -26,6 +27,7 @@ public class ConsoleInput implements IEntradaSalida{
 		} while (error);
 		return value;
 	}
+	@Override
 	public int readIntLessOrEqualThan(int upperBound, String mensaje) {
 		int value = 0;
 		do {
@@ -36,6 +38,7 @@ public class ConsoleInput implements IEntradaSalida{
 		} while (value > upperBound);
 		return value;
 	}
+	@Override
 	public int readIntInRange(int lowerBound, int upperBound, String mensaje) {
 		int value = 0;
 		do {
@@ -46,6 +49,18 @@ public class ConsoleInput implements IEntradaSalida{
 		} while (value < lowerBound || value > upperBound);
 		return value;
 	}
+	@Override
+	public int readIntGreaterOrEqualThan(int lowerBound, String mensaje) {
+		int value = 0;
+		do {
+			value = readInt(mensaje);
+			if (value < lowerBound) {
+				escribirLinea(String.format("%sEl valor del integer debe ser menor o igual que %d.%s", "\u001B[31m",lowerBound, "\u001B[0m"));
+			}
+		} while (value < lowerBound);
+		return value;
+	}
+	@Override
 	public char readChar(String mensaje) {
 		String value = "";
 		escribirLinea(mensaje);
@@ -57,6 +72,7 @@ public class ConsoleInput implements IEntradaSalida{
 		} while (value.trim().length() != 1);
 		return value.trim().charAt(0);
 	}
+	@Override
 	public boolean readBooleanUsingChar(char affirmativeValue, char negativeValue, String error, String mensaje) {
 		char value = '¬';
 		do {

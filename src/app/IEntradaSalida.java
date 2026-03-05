@@ -20,4 +20,5 @@ public interface IEntradaSalida {
 	 int readIntInRange(int lowerBound, int upperBound, String mensaje);
 	 int readInt(String mensaje);
 	 int readIntLessOrEqualThan(int upperBound, String mensaje);
+	 int readIntGreaterOrEqualThan(int lowerBound, String mensaje);
 }

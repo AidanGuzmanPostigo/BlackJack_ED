@@ -2,7 +2,7 @@ package dominio;
 public class Cpu extends Entidad implements ICpu{
 	static int count = 0;
 	public Cpu(int balance) {
-		super(balance,String.format("CPU - %d",++count));
+		super(balance,String.format("CPU%d",++count));
 	}
 	public Cpu (int balance, String mote) {
 		super(balance, mote);

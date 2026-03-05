@@ -1,4 +1,4 @@
 package dominio;
-public interface ICpu {
+public interface ICpu extends IEntidad {
 	int elegirJugada();
 }

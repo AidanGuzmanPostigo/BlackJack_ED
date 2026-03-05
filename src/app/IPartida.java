@@ -1,11 +1,14 @@
 package app;
 import java.util.List;
-import dominio.Baraja;
+import dominio.IBaraja;
 import dominio.IEntidad;
 public interface IPartida {
-	boolean activarCroupier(IEntradaSalida ci);
-	void agregarEntidad(IEntidad entidad);
 	void abandonarPartida();
+	void activarCroupier();
+	void preparacionBarajas(int veces);
+	void prepararJugadores(int balanceInicial, int veces, String ... motes);
+	void prepararCpus(int balanceInicial, int veces);
+	void eliminarEntidad (IEntidad entidad);
 	List<IEntidad> getEntidades();
-	Baraja getBaraja();
+	IBaraja getBaraja();
 }

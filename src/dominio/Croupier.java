@@ -8,4 +8,8 @@ public class Croupier extends Cpu implements ICroupier{
 			setBalance(1000000);
 		}
 	}
+	@Override
+	public String toString() {
+		return String.format("%s∞", super.toString().substring(0,10));
+	}
 }

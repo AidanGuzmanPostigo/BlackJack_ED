@@ -45,13 +45,21 @@ public class Entidad implements IEntidad{
 		this.estado = estado;
 	}
 	@Override
+	public void robar(Carta cartaRobada) {
+		mano.add(cartaRobada);
+	}
+	@Override
+	public void limpiarMano() {
+		mano.clear();
+	}
+	@Override
 	public void apostar(int cantidad) {
 		setBalance(balance - cantidad);
 		setApuestaActual(getApuestaActual()+cantidad);
 	}
 	@Override
-	public void apuestaGanada(int cantidad) {
-		setBalance(balance + cantidad);
+	public void apuestaGanada() {
+		setBalance(balance + (apuestaActual*2));
 		setApuestaActual(0);
 	}
 	@Override
@@ -70,20 +78,20 @@ public class Entidad implements IEntidad{
 		}
 		setPuntuacion(aux);
 		if (getPuntuacion()>21) {
-			estado = EstadoEntidad.PASADO;
+			setEstado(EstadoEntidad.PASADO);
 		}
 	}
 	@Override
 	public void plantarse() {
-		estado = EstadoEntidad.PLANTADO;
+		setEstado(EstadoEntidad.PLANTADO);
 	}
 	@Override
 	public void doblarApuesta() {
 		apostar(getApuestaActual());
-		estado = EstadoEntidad.HA_DOBLADO;
+		setEstado(EstadoEntidad.HA_DOBLADO);
 	}
 	@Override
 	public String toString() {
-		return String.format("%s, %s, %d", getMote(),getEstado().name(), balance);
+		return String.format("%s, %d", getMote(), balance);
 	}
 }

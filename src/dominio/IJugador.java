@@ -1,5 +1,4 @@
 package dominio;
-
-public interface IJugador {
+public interface IJugador extends IEntidad{
 	void retirarse();
 }

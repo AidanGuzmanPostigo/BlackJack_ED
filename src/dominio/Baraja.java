@@ -2,8 +2,8 @@ package dominio;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-public class Baraja {
-	List<Carta> cartasEnMazo;
+public class Baraja implements IBaraja {
+	private List<Carta> cartasEnMazo;
 	public Baraja() {
 		cartasEnMazo = new ArrayList<>();
 	}

@@ -1,4 +1,4 @@
 package dominio;
-public interface ICroupier {
+public interface ICroupier extends ICpu {
 	void recargarFondos();
 }
