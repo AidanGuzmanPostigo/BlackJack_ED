@@ -1,4 +1,4 @@
 package dominio;
-public interface ICroupier extends ICpu {
-	void recargarFondos();
+public interface ICroupier extends ICpu{
+	String mostrarManoCroupier();
 }

@@ -1,11 +1,11 @@
 package dominio;
 public interface IEntidad {
-	void apostar(int cantidad);
-	void calcularPuntuacion();
-	void plantarse();
-	void doblarApuesta();
-	String toString();
 	void robar(Carta cartaRobada);
+	int calcularPuntuacion();
+	void plantarse();
 	void limpiarMano();
-	void apuestaGanada();
+	String mostrarMano();
+	boolean isAlive();
+	boolean isDead();
+	String getMote();
 }

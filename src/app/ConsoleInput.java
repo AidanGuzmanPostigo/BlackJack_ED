@@ -28,17 +28,6 @@ public class ConsoleInput implements IEntradaSalida{
 		return value;
 	}
 	@Override
-	public int readIntLessOrEqualThan(int upperBound, String mensaje) {
-		int value = 0;
-		do {
-			value = readInt(mensaje);
-			if (value > upperBound) {
-				escribirLinea(String.format("%sEl valor del integer debe ser menor o igual que %d.%s", "\u001B[31m",upperBound, "\u001B[0m"));
-			}
-		} while (value > upperBound);
-		return value;
-	}
-	@Override
 	public int readIntInRange(int lowerBound, int upperBound, String mensaje) {
 		int value = 0;
 		do {
@@ -47,17 +36,6 @@ public class ConsoleInput implements IEntradaSalida{
 				escribirLinea(String.format("%sEl valor del integer debe estar comprendido entre %d y %d (ambos incluidos).%s", "\u001B[31m",lowerBound, upperBound, "\u001B[0m"));
 			}
 		} while (value < lowerBound || value > upperBound);
-		return value;
-	}
-	@Override
-	public int readIntGreaterOrEqualThan(int lowerBound, String mensaje) {
-		int value = 0;
-		do {
-			value = readInt(mensaje);
-			if (value < lowerBound) {
-				escribirLinea(String.format("%sEl valor del integer debe ser menor o igual que %d.%s", "\u001B[31m",lowerBound, "\u001B[0m"));
-			}
-		} while (value < lowerBound);
 		return value;
 	}
 	@Override

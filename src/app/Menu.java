@@ -11,6 +11,6 @@ public class Menu implements IMenu {
 	}
 	@Override
 	public int opcionesRonda() {
-		return ci.readIntInRange(1, 3, String.format("1.Plantarse\n2.Apostar cantidad\3.Doblar apuesta\n4. Retirarse."));
+		return ci.readIntInRange(1, 2, String.format("1.Plantarse\n2.Pedir carta"));
 	}
 }

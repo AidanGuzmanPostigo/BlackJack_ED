@@ -83,8 +83,8 @@ public class Baraja implements IBaraja {
 					addCarta(new Carta(tipoCarta,palo,valor));
 				}
 			}
-			barajar();
 		}
+		barajar();
 	}
 	private void addCarta(Carta c) {
 		cartasEnMazo.add(c);

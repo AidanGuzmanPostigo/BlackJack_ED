@@ -3,43 +3,22 @@ import java.util.ArrayList;
 import java.util.List;
 public class Entidad implements IEntidad{
 	private EstadoEntidad estado;
-	private int balance;
-	private int puntuacion;
 	private List<Carta> mano;
 	private String mote;
-	private int apuestaActual=0;
-	public int getApuestaActual() {
-		return apuestaActual;
-	}
-	public void setApuestaActual(int apuestaActual) {
-		this.apuestaActual = apuestaActual;
-	}
-	public Entidad(int balance, String mote) {
+	public Entidad(String mote) {
 		setEstado(EstadoEntidad.EN_PIE);
-		setBalance(balance);
 		this.mote = mote;
 		mano = new ArrayList<>();
 	}
+	@Override
 	public String getMote() {
 		return mote;
 	}
 	public List<Carta> getMano() {
 		return mano;
 	}
-	public void setPuntuacion(int puntuacion) {
-		this.puntuacion = puntuacion;
-	}
-	public int getPuntuacion() {
-		return puntuacion;
-	}
 	public EstadoEntidad getEstado() {
 		return estado;
-	}
-	public int getBalance() {
-		return balance;
-	}
-	public void setBalance(int balance) {
-		this.balance = balance;
 	}
 	public void setEstado(EstadoEntidad estado) {
 		this.estado = estado;
@@ -53,17 +32,7 @@ public class Entidad implements IEntidad{
 		mano.clear();
 	}
 	@Override
-	public void apostar(int cantidad) {
-		setBalance(balance - cantidad);
-		setApuestaActual(getApuestaActual()+cantidad);
-	}
-	@Override
-	public void apuestaGanada() {
-		setBalance(balance + (apuestaActual*2));
-		setApuestaActual(0);
-	}
-	@Override
-	public void calcularPuntuacion() {
+	public int calcularPuntuacion() {
 		int aux=0;
 		int asCount = 0;
 		for (int i = 0; i< mano.size();i++) {
@@ -76,22 +45,40 @@ public class Entidad implements IEntidad{
 				asCount--;
 			}
 		}
-		setPuntuacion(aux);
-		if (getPuntuacion()>21) {
+		if (aux>21) {
 			setEstado(EstadoEntidad.PASADO);
 		}
+		return aux;
 	}
 	@Override
 	public void plantarse() {
 		setEstado(EstadoEntidad.PLANTADO);
 	}
 	@Override
-	public void doblarApuesta() {
-		apostar(getApuestaActual());
-		setEstado(EstadoEntidad.HA_DOBLADO);
+	public boolean isAlive() {
+		return getEstado() == EstadoEntidad.EN_PIE;
+	}
+	@Override
+	public boolean isDead() {
+		return getEstado() == EstadoEntidad.PASADO;
+	}
+	@Override
+	public String mostrarMano() {
+		StringBuilder sb = new StringBuilder("");
+		sb.append(getMote() + " - ");
+		for (int i = 0; i<getMano().size();i++) {
+			if (i != 0 && i!= getMano().size()-1) {
+				sb.append(", ");
+			} else if (i == getMano().size()-1) {
+				sb.append(" y ");
+			}
+			sb.append(getMano().get(i).toString());
+		}
+		sb.append(".");
+		return sb.toString();
 	}
 	@Override
 	public String toString() {
-		return String.format("%s, %d", getMote(), balance);
+		return String.format("%s, %d", getMote(), calcularPuntuacion());
 	}
 }

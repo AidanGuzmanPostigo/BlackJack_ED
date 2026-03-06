@@ -1,15 +1,25 @@
 package dominio;
-public class Croupier extends Cpu implements ICroupier{
+public class Croupier extends Cpu implements ICroupier {
 	public Croupier() {
-		super(1000000,"Croupier");
-	}
-	public void recargarFondos() {
-		if (getBalance() <= 0) {
-			setBalance(1000000);
-		}
+		super("Croupier");
 	}
 	@Override
-	public String toString() {
-		return String.format("%s∞", super.toString().substring(0,10));
+	public String mostrarManoCroupier() {
+		StringBuilder sb = new StringBuilder("");
+		sb.append(getMote() + " - ");
+		for (int i = 0; i<getMano().size();i++) {
+			if (i != 0 && i!= getMano().size()-1) {
+				sb.append(", ");
+			} else if (i == getMano().size()-1) {
+				sb.append(" y ");
+			}
+			if (i == 0) {
+				sb.append("??");
+			} else {
+				sb.append(getMano().get(i).toString());
+			}
+		}
+		sb.append(".");
+		return sb.toString();
 	}
 }
