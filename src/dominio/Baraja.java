@@ -2,14 +2,28 @@ package dominio;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+/**
+ * Clase encargada de la gestión de la baraja.
+ */
 public class Baraja implements IBaraja {
 	private List<Carta> cartasEnMazo;
+	/**
+	 * Constructor de la clase.
+	 * @return Baraja instanciada.
+	 */
 	public Baraja() {
 		cartasEnMazo = new ArrayList<>();
 	}
+	/**
+	 * Baraja las cartas dentro de su lista de cartas.
+	 */
 	private void barajar() {
 		Collections.shuffle(cartasEnMazo);
 	}
+	/**
+	 * @inheritDoc
+	 */
+	@Override
 	public void iniciar(int barajas) {
 		cartasEnMazo.clear();
 		for (int i2  = 0; i2< barajas;i2++) {
@@ -86,9 +100,17 @@ public class Baraja implements IBaraja {
 		}
 		barajar();
 	}
+	/**
+	 * Añade una carta a la lista de cartas del mazo.
+	 * @param c Carta a añadir.
+	 */
 	private void addCarta(Carta c) {
 		cartasEnMazo.add(c);
 	}
+	/**
+	 * @inheritDoc
+	 */
+	@Override
 	public Carta draw() {
 		Carta cartaRobada = cartasEnMazo.get(0);
 		cartasEnMazo.remove(0);

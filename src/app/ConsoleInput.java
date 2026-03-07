@@ -1,14 +1,28 @@
 package app;
 import java.util.Scanner;
 import java.util.InputMismatchException;
+/**
+ * Clase encargada de la entrada y salida por consola.
+ */
 public class ConsoleInput implements IEntradaSalida{
 	private Scanner keyboard;
+	/**
+	 * Constructor de la clase.
+	 * @param keyboard Escáner encargado de leer mensajes por consola.
+	 * @return ConsoleInput instanciado.
+	 */
 	public ConsoleInput(Scanner keyboard) {
 		this.keyboard = keyboard;
 	}
+	/**
+	 * Cierra el recurso del escáner.
+	 */
 	private void cleanInput() {
 		keyboard.nextLine();
 	}
+	/**
+	 * @inheritDoc
+	 */
 	@Override
 	public int readInt(String mensaje) {
 		int value=0;
@@ -27,6 +41,9 @@ public class ConsoleInput implements IEntradaSalida{
 		} while (error);
 		return value;
 	}
+	/**
+	 * @inheritDoc
+	 */
 	@Override
 	public int readIntInRange(int lowerBound, int upperBound, String mensaje) {
 		int value = 0;
@@ -38,6 +55,9 @@ public class ConsoleInput implements IEntradaSalida{
 		} while (value < lowerBound || value > upperBound);
 		return value;
 	}
+	/**
+	 * @inheritDoc
+	 */
 	@Override
 	public char readChar(String mensaje) {
 		String value = "";
@@ -50,6 +70,9 @@ public class ConsoleInput implements IEntradaSalida{
 		} while (value.trim().length() != 1);
 		return value.trim().charAt(0);
 	}
+	/**
+	 * @inheritDoc
+	 */
 	@Override
 	public boolean readBooleanUsingChar(char affirmativeValue, char negativeValue, String error, String mensaje) {
 		char value = '¬';
@@ -65,14 +88,23 @@ public class ConsoleInput implements IEntradaSalida{
 			return false;
 		}
 	}
+	/**
+	 * @inheritDoc
+	 */
 	@Override
 	public void cerrar() {
 		keyboard.close();
 	}
+	/**
+	 * @inheritDoc
+	 */
 	@Override
     public void escribirLinea(String texto) {
         System.out.println(texto);
     }
+	/**
+	 * @inheritDoc
+	 */
 	@Override
     public String leerTexto(String mensaje) {
     	String value = "";

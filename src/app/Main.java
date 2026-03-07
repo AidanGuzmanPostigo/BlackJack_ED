@@ -2,7 +2,13 @@ package app;
 import java.util.Scanner;
 import dominio.Baraja;
 import dominio.IBaraja;
-public class Test {
+/**
+ * Clase en la que se ejecutará el flujo del programa.
+ */
+public class Main {
+	/**
+	 * En este método ocurre el flujo del programa.
+	 */
 	public void show() {
 		Scanner sc = new Scanner(System.in);
 		IEntradaSalida ci = new ConsoleInput(sc);
@@ -19,9 +25,10 @@ public class Test {
 			}
 			}
 		} while(option !=2);
+		ci.cerrar();
 	}
 	
 	public static void main(String[] args) {
-		new Test().show();
+		new Main().show();
 	}
 }

@@ -1,8 +1,19 @@
 package dominio;
+/**
+ * Clase que gestiona al Croupier.
+ */
 public class Croupier extends Cpu implements ICroupier {
+	/**
+	 * Constructor de la clase.
+	 * Llama al constructor de Cpu con el mote Croupier.
+	 * @return Croupier instanciado.
+	 */
 	public Croupier() {
 		super("Croupier");
 	}
+	/**
+	 * @inheritDoc
+	 */
 	@Override
 	public String mostrarManoCroupier() {
 		StringBuilder sb = new StringBuilder("");
