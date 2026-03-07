@@ -16,3 +16,5 @@ Respecto a las mejoras respecto al planteamiento original básico:
 - Hemos añadido que se puedan jugar de 1 a 4 jugadores.
 - Hemos añadido que se puedan añadir Cpus respecto al número de jugadores (Si solo hay un jugador habrá que añadirse una, si hay 4 entonces no se podrá añadir ninguna).
 - Los palos de las cartas se imprimen con colores.
+
+Miembros del proyecto: Aidan Guzmán Postigo y Rocío Lobato Monferrer.
