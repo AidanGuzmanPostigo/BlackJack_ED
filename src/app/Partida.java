@@ -109,7 +109,9 @@ public class Partida implements IPartida{
 			puntuacionRonda(false);
 		}
 		if (getEntidades().get(0) instanceof ICroupier) {
-			turnoCroupier();
+			do {
+				turnoCroupier();
+			} while (getEntidades().get(0).isAlive());
 		}
 		calcularGanador();
 	}
@@ -232,7 +234,7 @@ public class Partida implements IPartida{
 					puntGanador = getEntidades().get(i).calcularPuntuacion();
 					areAllDead=false;
 				} else if (getEntidades().get(i).calcularPuntuacion() == puntGanador) {
-					ganador.append(getEntidades().get(i).getMote());
+					ganador.append(", "+getEntidades().get(i).getMote());
 					isTie = true;
 					areAllDead = false;
 				}

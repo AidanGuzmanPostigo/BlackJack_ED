@@ -23,7 +23,7 @@ public class Cpu extends Entidad implements ICpu{
 	 */
 	@Override
 	public int elegirJugada() {
-		if (calcularPuntuacion() <= 13) {
+		if (calcularPuntuacion() <= 17) {
 			return 2;
 		} else if (calcularPuntuacion()>21) {
 			return 0;
